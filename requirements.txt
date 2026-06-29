@@ -1,0 +1,7 @@
+Flask>=3.0.0
+Flask-Cors>=6.0.0
+numpy>=1.26.0
+onnxruntime>=1.18.0
+Pillow>=10.4.0
+requests>=2.31.0
+gunicorn>=22.0.0
