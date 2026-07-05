@@ -4,7 +4,7 @@ import onnxruntime as ort
 import threading
 import time
 import requests
-from flask import Flask, request, jsonify
+from Flask import Flask, request, jsonify
 from flask_cors import CORS
 from PIL import Image
  
@@ -58,7 +58,7 @@ def health():
 def index():
     return jsonify({
         "message": "Welcome to Elixa MYSTATIS Detection API",
-        "version": "1.2.5",
+        "version": "1.0.0",
         "endpoints": {
             "/predict": "POST - Upload image file with key 'file'",
             "/health": "GET - Check API status"
@@ -102,11 +102,9 @@ def predict():
             confidence = (1.0 - sigmoid_score) * 100
  
         # -------------------------------------------------------------
-        # HATUA YA ULINZI KWA ASILIMIA (PERCENTAGE FILTER)
+        # TUNALINDA MFUMO: KAMA PICHA SIO YA CHUCHU (CONFIDENCE CHINI YA 85%)
         # -------------------------------------------------------------
-        # Kama confidence ipo chini ya 88.0%, maana yake picha haina sifa za chuchu.
-        # Tunarudisha ujumbe sahihi ulioelekezwa.
-        if confidence < 88.0:
+        if confidence < 85.0:
             return jsonify({
                 'success': False,
                 'error': "Tafadhali tuma picha sahihi ya chuchu za ng'ombe."
