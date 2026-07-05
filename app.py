@@ -58,7 +58,7 @@ def health():
 def index():
     return jsonify({
         "message": "Welcome to Elixa MYSTATIS Detection API",
-        "version": "1.2.0",
+        "version": "1.2.5",
         "endpoints": {
             "/predict": "POST - Upload image file with key 'file'",
             "/health": "GET - Check API status"
@@ -104,12 +104,12 @@ def predict():
         # -------------------------------------------------------------
         # HATUA YA ULINZI KWA ASILIMIA (PERCENTAGE FILTER)
         # -------------------------------------------------------------
-        # Kama confidence ya model ipo chini ya 88%, maana yake picha haina sifa 
-        # za chuchu ya ng'ombe inayotafutwa (ni picha ya ajabu). Kataa papo hapo!
+        # Kama confidence ipo chini ya 88.0%, maana yake picha haina sifa za chuchu.
+        # Tunarudisha ujumbe sahihi ulioelekezwa.
         if confidence < 88.0:
             return jsonify({
                 'success': False,
-                'error': 'Tafadhali tuma picha sahihi ya chuchu za ng\'ombe.'
+                'error': "Tafadhali tuma picha sahihi ya chuchu za ng'ombe."
             }), 400
         # -------------------------------------------------------------
  
